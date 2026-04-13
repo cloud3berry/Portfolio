@@ -2,150 +2,1069 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaina | Freelance Web Portfolio</title>
+  <meta
+    name="description"
+    content="Portfolio of Zaina, a freelance web creator building modern websites for businesses, school projects, and growing brands."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
   <style>
+    :root {
+      --bg: #f7f0e6;
+      --bg-strong: #163229;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: rgba(18, 38, 31, 0.92);
+      --text: #13221c;
+      --muted: rgba(19, 34, 28, 0.72);
+      --muted-inverse: rgba(247, 240, 230, 0.75);
+      --line: rgba(19, 34, 28, 0.09);
+      --accent: #f06e3c;
+      --accent-2: #ffd167;
+      --accent-3: #3aa884;
+      --white: #fffdf9;
+      --shadow: 0 28px 70px rgba(17, 27, 22, 0.12);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
-      background: linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 100%);
-      color: #263238;
       min-height: 100vh;
-      transition: background 0.5s;
+      font-family: "Manrope", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(240, 110, 60, 0.22), transparent 26%),
+        radial-gradient(circle at 80% 0%, rgba(255, 209, 103, 0.26), transparent 24%),
+        linear-gradient(180deg, #fbf5eb 0%, #f6ecdd 48%, #efe3d0 100%);
+      overflow-x: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 70px 20px 50px 20px;
-      background: linear-gradient(120deg, #b2dfdb 60%, #a5d6a7 100%);
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-      box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.08);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(19, 34, 28, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(19, 34, 28, 0.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #00695c;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #388e3c;
-      font-size: 1.2rem;
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 14px 28px;
-      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-      color: #263238;
+    a {
+      color: inherit;
       text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 2px 8px 0 rgba(44, 62, 80, 0.10);
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-    .btn:hover {
-      background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
-      color: #00695c;
-      box-shadow: 0 4px 16px 0 rgba(44, 62, 80, 0.15);
     }
 
-    .projects {
-      padding: 50px 20px 30px 20px;
-      max-width: 900px;
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      border-radius: 999px;
+      filter: blur(14px);
+    }
+
+    .page::before {
+      width: 320px;
+      height: 320px;
+      top: 10%;
+      right: -80px;
+      background: rgba(58, 168, 132, 0.18);
+    }
+
+    .page::after {
+      width: 280px;
+      height: 280px;
+      bottom: 10%;
+      left: -70px;
+      background: rgba(240, 110, 60, 0.16);
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
       margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(247, 240, 230, 0.94), rgba(247, 240, 230, 0.55));
+      border-bottom: 1px solid rgba(19, 34, 28, 0.06);
+    }
+
+    .topbar-inner,
+    .hero-meta,
+    .section-head,
+    .footer-row {
       display: flex;
-      flex-direction: column;
-      gap: 28px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .project {
-      background: rgba(255,255,255,0.85);
-      padding: 28px 24px;
-      border-radius: 18px;
-      box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.07);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border-left: 6px solid #43e97b;
-    }
-    .project:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.13);
-      border-left: 6px solid #38f9d7;
+    .topbar-inner {
+      min-height: 80px;
     }
 
-    .project h3 {
-      margin-top: 0;
-      color: #00695c;
-      font-size: 1.4rem;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .project p {
-      color: #388e3c;
-      font-size: 1.05rem;
-      margin-bottom: 10px;
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-family: "Syne", Impact, sans-serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--accent), #d64d28 55%, var(--bg-strong) 100%);
+      box-shadow: 0 16px 28px rgba(240, 110, 60, 0.28);
     }
 
-    .project a {
-      color: #00897b;
-      text-decoration: underline;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .project a:hover {
-      color: #388e3c;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px 30px 20px;
-      color: #388e3c;
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .nav-cta {
+      color: var(--white);
+      background: var(--bg-strong);
+    }
+
+    .button:hover,
+    .button:focus-visible,
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 4.2rem 0 2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .project-card,
+    .service-card,
+    .story-card,
+    .cta-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      padding: 2.3rem;
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.46)),
+        linear-gradient(135deg, rgba(255, 209, 103, 0.16), rgba(58, 168, 132, 0.08));
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      right: -34px;
+      bottom: -90px;
+      width: 220px;
+      height: 220px;
+      border-radius: 40px;
+      transform: rotate(18deg);
+      background: linear-gradient(135deg, rgba(240, 110, 60, 0.16), rgba(255, 209, 103, 0.08));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #2f5d4b;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .list li::before,
+    .marquee-item::before {
+      content: "";
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .eyebrow::before {
+      width: 10px;
+      height: 10px;
+      box-shadow: 0 0 0 6px rgba(240, 110, 60, 0.1);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Syne", Impact, sans-serif;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 {
+      margin-top: 1.4rem;
+      max-width: 10ch;
+      font-size: clamp(3.3rem, 7vw, 6.5rem);
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .hero p {
+      margin: 1.3rem 0 0;
+      max-width: 58ch;
+      font-size: 1.07rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .hero-actions,
+    .pill-row,
+    .project-links,
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .hero-actions {
+      margin-top: 1.8rem;
+    }
+
+    .button {
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--bg-strong), #24463a);
+      box-shadow: 0 22px 34px rgba(22, 50, 41, 0.18);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.58);
+      border-color: rgba(19, 34, 28, 0.1);
+    }
+
+    .hero-meta {
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-card {
+      flex: 1 1 180px;
+      min-width: 0;
+      padding: 1rem 1.05rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(19, 34, 28, 0.06);
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-weight: 800;
       font-size: 1rem;
-      background: transparent;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 1.6rem;
+      color: var(--white);
+      background:
+        linear-gradient(180deg, rgba(18, 38, 31, 0.98), rgba(23, 48, 40, 0.92)),
+        radial-gradient(circle at top right, rgba(255, 209, 103, 0.22), transparent 28%);
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .panel-inner {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: max-content;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .availability::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #67e08a;
+    }
+
+    .panel-copy {
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .panel-copy h2 {
+      font-size: 2rem;
+    }
+
+    .panel-copy p,
+    .stat-card span,
+    .project-card p,
+    .service-card p,
+    .story-card p,
+    .cta-card p {
+      line-height: 1.72;
+    }
+
+    .panel-copy p,
+    .stat-card span {
+      color: var(--muted-inverse);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .stat-card {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: "Syne", Impact, sans-serif;
+      font-size: 1.55rem;
+    }
+
+    .pill-row {
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.72rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .marquee {
+      margin: 1.8rem 0 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(19, 34, 28, 0.08);
+      border-bottom: 1px solid rgba(19, 34, 28, 0.08);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 2rem;
+      width: max-content;
+      padding: 1rem 0;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: #305748;
+    }
+
+    .marquee-item::before {
+      width: 11px;
+      height: 11px;
+    }
+
+    section {
+      padding: 2.3rem 0;
+    }
+
+    .section-head {
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+    }
+
+    .section-head p {
+      max-width: 44ch;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .projects-grid,
+    .services-grid,
+    .story-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .story-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .project-card,
+    .service-card,
+    .story-card,
+    .cta-card {
+      padding: 1.55rem;
+      background: rgba(255, 255, 255, 0.68);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card.featured {
+      color: var(--white);
+      background:
+        linear-gradient(160deg, rgba(20, 44, 36, 0.98), rgba(29, 59, 49, 0.94)),
+        radial-gradient(circle at top right, rgba(255, 209, 103, 0.28), transparent 26%);
+    }
+
+    .project-card.upcoming {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.52)),
+        linear-gradient(135deg, rgba(58, 168, 132, 0.12), rgba(255, 209, 103, 0.08));
+    }
+
+    .project-card::before,
+    .service-card::before,
+    .story-card::before,
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      right: -10px;
+      bottom: -42px;
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      transform: rotate(18deg);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .project-card small,
+    .service-card small,
+    .story-card small {
+      display: inline-block;
+      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .project-card.featured small {
+      color: rgba(247, 240, 230, 0.72);
+    }
+
+    .project-card h3,
+    .service-card h3,
+    .story-card h3,
+    .cta-card h2 {
+      font-size: 1.8rem;
+    }
+
+    .project-card p,
+    .service-card p,
+    .story-card p,
+    .cta-card p {
+      margin: 0.9rem 0 0;
+      color: var(--muted);
+    }
+
+    .project-card.featured p {
+      color: rgba(247, 240, 230, 0.76);
+    }
+
+    .project-links {
+      position: relative;
+      margin-top: 1.2rem;
+    }
+
+    .text-link {
+      font-weight: 800;
+      color: #245240;
+    }
+
+    .project-card.featured .text-link {
+      color: #ffd167;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .list li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--muted);
+    }
+
+    .list li::before {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+    }
+
+    .cta-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.56)),
+        radial-gradient(circle at left center, rgba(240, 110, 60, 0.16), transparent 22%);
+    }
+
+    .footer {
+      padding: 0.7rem 0 2.7rem;
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 640ms ease, transform 640ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .projects-grid,
+      .services-grid,
+      .story-grid,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        max-width: 100%;
+      }
+
+      .section-head,
+      .footer-row,
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        position: static;
+      }
+
+      .topbar-inner {
+        padding: 1rem 0;
+        min-height: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .project-card,
+      .service-card,
+      .story-card,
+      .cta-card {
+        padding: 1.25rem;
+        border-radius: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 16vw, 4.6rem);
+      }
+
+      .button,
+      .nav-cta {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .marquee-track,
+      .reveal,
+      .reveal.is-visible,
+      .button,
+      .nav-cta {
+        animation: none;
+        transition: none;
+      }
     }
   </style>
 </head>
-
 <body>
+  <div class="page">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <span class="brand-mark">Z</span>
+          <span>Zaina</span>
+        </a>
 
-<header>
-  <h1>Hi, I'm ZAINA</h1>
-  <p>I build simple and modern websites for businesses</p>
-  <a href="https://wa.me/212783927349" class="btn">Contact Me on WhatsApp</a>
-</header>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#projects">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a class="nav-cta" href="https://wa.me/212783924973" target="_blank" rel="noreferrer">WhatsApp Me</a>
+        </nav>
+      </div>
+    </header>
 
-<section class="projects">
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Freelance web creator</span>
+            <h1>
+              Simple websites with
+              <span class="accent">more style,</span>
+              more clarity, and more personality.
+            </h1>
+            <p>
+              Hi, I'm Zaina. I build modern websites for businesses, personal brands, and school
+              projects. My focus is clean design, responsive layouts, and pages that feel fresh
+              instead of looking like another copied template.
+            </p>
 
-  <div class="project">
-    <h3>School Project Website</h3>
-    <p>A clean and responsive website built for a school project.</p>
-    <a href="https://github.com/cloud3berry/AutoTimeTable" target="_blank">View Project</a>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects">See My Work</a>
+              <a class="button button-secondary" href="https://github.com/cloud3berry" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-card">
+                <span class="meta-label">Focus</span>
+                <span class="meta-value">Modern business websites</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Style</span>
+                <span class="meta-value">Clean, warm, mobile-friendly</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Contact</span>
+                <span class="meta-value">Fast replies on WhatsApp</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal" aria-label="Quick profile">
+            <div class="panel-inner">
+              <span class="availability">Available for new projects</span>
+
+              <div class="panel-copy">
+                <h2>Design that feels alive.</h2>
+                <p>
+                  I like pages that look polished, feel easy to use, and still show some personality.
+                  Whether it's a small business or a school project, I want the final result to feel
+                  confident and clear.
+                </p>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <strong>02</strong>
+                  <span>Published portfolio projects already live in my story.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>100%</strong>
+                  <span>Responsive-first mindset for phones, tablets, and desktop.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Direct</strong>
+                  <span>Simple communication and quick feedback through WhatsApp.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Growing</strong>
+                  <span>Still building my portfolio, but every new project gets better.</span>
+                </div>
+              </div>
+
+              <div class="pill-row" aria-label="Skills">
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">Responsive Design</span>
+                <span class="pill">Landing Pages</span>
+                <span class="pill">Portfolio Sites</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span class="marquee-item">clean layouts</span>
+            <span class="marquee-item">mobile friendly</span>
+            <span class="marquee-item">small business websites</span>
+            <span class="marquee-item">portfolio pages</span>
+            <span class="marquee-item">fresh visual style</span>
+            <span class="marquee-item">clean layouts</span>
+            <span class="marquee-item">mobile friendly</span>
+            <span class="marquee-item">small business websites</span>
+            <span class="marquee-item">portfolio pages</span>
+            <span class="marquee-item">fresh visual style</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <span class="eyebrow">Selected projects</span>
+              <h2>Small portfolio, stronger presentation.</h2>
+            </div>
+            <p>
+              I do not want a portfolio full of filler. Even with a small number of projects, the goal
+              is to show real work clearly and make each one feel intentional.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card featured reveal">
+              <small>Featured build</small>
+              <h3>Business Website for My Mom</h3>
+              <p>
+                A simple business website designed to help a small brand present products in a cleaner,
+                more trustworthy way online.
+              </p>
+              <ul class="list">
+                <li>Product-focused presentation</li>
+                <li>Simple user journey</li>
+                <li>Built to support a real business need</li>
+              </ul>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/cloud3berry/AmireCaftane" target="_blank" rel="noreferrer">View Project</a>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <small>School work</small>
+              <h3>School Project Website</h3>
+              <p>
+                A clean and responsive project website built with attention to readability, structure,
+                and a modern visual look.
+              </p>
+              <ul class="list">
+                <li>Clear layout structure</li>
+                <li>Responsive behavior</li>
+                <li>Simple and accessible styling</li>
+              </ul>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/cloud3berry/AutoTimeTable" target="_blank" rel="noreferrer">View Project</a>
+              </div>
+            </article>
+
+            <article class="project-card upcoming reveal">
+              <small>Next chapter</small>
+              <h3>More projects are coming.</h3>
+              <p>
+                This space is ready for the next websites I build for businesses, personal brands, or
+                future freelance clients. The portfolio is growing on purpose, not with random filler.
+              </p>
+              <ul class="list">
+                <li>Future client work</li>
+                <li>More polished case studies</li>
+                <li>Stronger before and after results</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <span class="eyebrow">What I offer</span>
+              <h2>Useful websites, not just pretty screens.</h2>
+            </div>
+            <p>
+              I like projects that need good presentation and practical structure at the same time.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal">
+              <small>01</small>
+              <h3>Business websites</h3>
+              <p>
+                Clean pages for small businesses that want to show services, products, and contact
+                details in a more professional way.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <small>02</small>
+              <h3>Portfolio pages</h3>
+              <p>
+                Personal portfolio sites that feel more designed, more modern, and more memorable than
+                basic one-column templates.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <small>03</small>
+              <h3>Responsive redesigns</h3>
+              <p>
+                Improving simple pages so they look better on mobile, have better spacing, and feel more
+                polished overall.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="story-grid">
+            <article class="story-card reveal">
+              <small>About me</small>
+              <h3>I want my work to feel simple, fresh, and confident.</h3>
+              <p>
+                I am still growing my freelance portfolio, which means every project matters. I care
+                about the details: spacing, colors, typography, mobile layout, and how someone feels
+                when they open the page for the first time.
+              </p>
+              <ul class="list">
+                <li>I keep layouts clean and easy to understand</li>
+                <li>I build with mobile screens in mind from the start</li>
+                <li>I try to give every page its own personality</li>
+              </ul>
+            </article>
+
+            <article class="story-card reveal">
+              <small>Why work with me</small>
+              <h3>Direct communication and steady improvement.</h3>
+              <p>
+                I keep things simple: clear discussion, focused design, and a result that looks more
+                polished than a generic beginner template. I am building momentum, and that energy goes
+                into the work.
+              </p>
+              <ul class="list">
+                <li>Fast and simple contact on WhatsApp</li>
+                <li>Modern styling without overcomplicating the page</li>
+                <li>Growing portfolio with real care behind each update</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="cta-card reveal">
+            <div>
+              <span class="eyebrow">Let's build something</span>
+              <h2>Need a clean website with more personality?</h2>
+              <p>
+                If you want a page for your business, a portfolio, or a school project that looks more
+                modern and professional, message me and let's talk about it.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a class="button button-primary" href="https://wa.me/212783924973" target="_blank" rel="noreferrer">Contact on WhatsApp</a>
+              <a class="button button-secondary" href="https://github.com/cloud3berry" target="_blank" rel="noreferrer">See GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-row">
+        <span>&copy; 2026 Built by Zaina</span>
+        <span>Freelance web portfolio</span>
+      </div>
+    </footer>
   </div>
 
-  <div class="project">
-    <h3>Business Website (My Mom)</h3>
-    <p>A simple website to help a small business showcase products.</p>
-    <a href="https://github.com/cloud3berry/AmireCaftane" target="_blank">View Project</a>
-  </div>
-  <!-- future projects -->
-<!-- 
-  <div class="project">
-    <h3>Clothing Shop Website</h3>
-    <p>A modern catalog-style website for a clothing brand.</p>
-    <a href="#">View Project</a>
-  </div> -->
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-</section>
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
 
-<footer>
-  <p>© 2026 - Built by ZAINA</p>
-</footer>
-
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
 </body>
 </html>
