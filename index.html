@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 100%);
+      color: #263238;
+      min-height: 100vh;
+      transition: background 0.5s;
+    }
+
+    header {
+      text-align: center;
+      padding: 70px 20px 50px 20px;
+      background: linear-gradient(120deg, #b2dfdb 60%, #a5d6a7 100%);
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.08);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #00695c;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #388e3c;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      color: #263238;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px 0 rgba(44, 62, 80, 0.10);
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+      color: #00695c;
+      box-shadow: 0 4px 16px 0 rgba(44, 62, 80, 0.15);
+    }
+
+    .projects {
+      padding: 50px 20px 30px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .project {
+      background: rgba(255,255,255,0.85);
+      padding: 28px 24px;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 6px solid #43e97b;
+    }
+    .project:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.13);
+      border-left: 6px solid #38f9d7;
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: #00695c;
+      font-size: 1.4rem;
+    }
+
+    .project p {
+      color: #388e3c;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .project a {
+      color: #00897b;
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .project a:hover {
+      color: #388e3c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 30px 20px;
+      color: #388e3c;
+      font-size: 1rem;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Hi, I'm ZAINA</h1>
+  <p>I build simple and modern websites for businesses</p>
+  <a href="https://wa.me/212783927349" class="btn">Contact Me on WhatsApp</a>
+</header>
+
+<section class="projects">
+
+  <div class="project">
+    <h3>School Project Website</h3>
+    <p>A clean and responsive website built for a school project.</p>
+    <a href="https://github.com/cloud3berry/AutoTimeTable" target="_blank">View Project</a>
+  </div>
+
+  <div class="project">
+    <h3>Business Website (My Mom)</h3>
+    <p>A simple website to help a small business showcase products.</p>
+    <a href="https://github.com/cloud3berry/AmireCaftane" target="_blank">View Project</a>
+  </div>
+  <!-- future projects -->
+<!-- 
+  <div class="project">
+    <h3>Clothing Shop Website</h3>
+    <p>A modern catalog-style website for a clothing brand.</p>
+    <a href="#">View Project</a>
+  </div> -->
+
+</section>
+
+<footer>
+  <p>© 2026 - Built by ZAINA</p>
+</footer>
+
+</body>
+</html>
